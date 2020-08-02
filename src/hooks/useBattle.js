@@ -34,6 +34,7 @@ export default function useBattle() {
         tokenNumbers,
         tokensOnGrid: [].concat(battle.tokensOnGrid, [{
           ...token,
+          hp: token.maxHp,
           id: battle.nextTokenId,
           number: tokenNumbers[token.name]
         }])
