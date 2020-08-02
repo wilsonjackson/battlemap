@@ -46,6 +46,7 @@ img {
   background-color: #f00;
   font-family: cursive;
   font-size: 30px;
+  transform: translate(0, 0);
 }
 .token > .name,
 .token > .number {

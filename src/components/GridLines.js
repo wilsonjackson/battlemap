@@ -5,7 +5,7 @@ export function GridLines({grid, orientation}) {
   const size = grid.tileSize || 20;
   const style = {
     [`backgroundPosition${orientation}`]: `${grid['offset' + orientation]}px`,
-    backgroundSize: [`${size}px`, '100%'].sort(() => ({X: 1, Y: -1}[orientation])).join(' '),
+    backgroundSize: (s => orientation === 'X' ? s : s.reverse())([`${size}px`, '100%']).join(' '),
     backgroundImage: `linear-gradient(to ${{
       X: 'right',
       Y: 'bottom'
