@@ -1,11 +1,13 @@
 import React, {useContext, useEffect} from "react";
 import BattleContext from "../contexts/BattleContext";
+import TokenContext from "../contexts/TokenContext";
 import {useDrop} from "react-dnd";
 import {GridLines} from "./GridLines";
 import GridToken from "./GridToken";
 import './Grid.css';
 
 export default function Grid({grid}) {
+  const {setToken} = useContext(TokenContext);
   const battle = useContext(BattleContext);
   const normalizeCoords = ({x, y}) => ({x: x - grid.bounds.left, y: y - grid.bounds.top});
   const coordsToCell = ({x, y}) => ({x: Math.floor(x / grid.tileSize), y: Math.floor(y / grid.tileSize)});
@@ -45,7 +47,7 @@ export default function Grid({grid}) {
         <GridLines key="x" grid={grid} orientation="X"/>,
         <GridLines key="y" grid={grid} orientation="Y"/>
       ]}
-      <div ref={drop} className="grid"
+      <div ref={drop} className="grid" onClick={() => setToken(null)}
            style={{left: grid.offsetX, top: grid.offsetY, width: grid.bounds.width, height: grid.bounds.height}}>
         {battle.tokensOnGrid.map(token => (
           <GridToken key={token.id} {...token}/>

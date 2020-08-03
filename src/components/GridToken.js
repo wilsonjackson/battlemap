@@ -1,19 +1,18 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useRef} from "react";
 import Token from "./Token";
 import {useDrag} from "react-dnd";
 import composeRefs from "@seznam/compose-react-refs/composeRefs";
 import useKeys from "../hooks/useKeys";
-import BattleContext from "../contexts/BattleContext";
 import './GridToken.css';
-import TokenContext from '../contexts/TokenContext';
+import TokenContext, {pub} from '../contexts/TokenContext';
 
 export default function GridToken(props) {
-  const {hp, zIndex, width, height, left, top} = props;
-  const {setToken} = useContext(TokenContext);
-  const battle = useContext(BattleContext);
-  const updateBattle = changes => battle.updateToken(Object.assign({}, props, changes));
+  const {id, zIndex, width, height, left, top} = props;
+  const self = useRef();
+  const tokenContext = useContext(TokenContext);
   const keys = useKeys({
-    'd': () => updateBattle({hp: hp - 1})
+    'd': () => pub('dmg'),
+    'h': () => pub('heal')
   });
   const [{isDragging}, drag] = useDrag({
     item: Object.assign({}, props, {
@@ -24,12 +23,19 @@ export default function GridToken(props) {
     })
   });
 
-
   // noinspection JSUnusedGlobalSymbols
   const handlers = {
-    onFocus: () => setToken(props),
-    onBlur: () => setToken(null)
+    onMouseDown: () => {
+      if (!tokenContext.token || tokenContext.token.id !== id)
+        tokenContext.setToken(props);
+    },
+    onClick: e => e.stopPropagation()
   };
+
+  useEffect(() => {
+    if (tokenContext.token && tokenContext.token.id === id)
+      self.current.focus();
+  });
 
   const style = {
     zIndex: zIndex,
@@ -42,7 +48,7 @@ export default function GridToken(props) {
   };
 
   return (
-    <div ref={composeRefs(drag, keys)} className="grid-token" tabIndex="-1" style={style} {...handlers}>
+    <div ref={composeRefs(self, drag, keys)} className="grid-token" tabIndex="-1" style={style} {...handlers}>
       <Token {...props}/>
     </div>
   );
