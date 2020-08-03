@@ -1,0 +1,28 @@
+.token {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #b34e4e;
+    box-shadow: 0 0 2px #fff;
+    font-size: 30px;
+}
+.token > .name,
+.token > .number {
+    text-align: center;
+    text-shadow: 1px 1px 2px #0009;
+}
+.token > .health {
+    position: absolute;
+    bottom: -5%;
+    width: 100%;
+    height: 10%;
+    background-color: #A00000;
+    box-shadow: 0 0 2px #fff;
+}
+.token > .health > .current {
+    height: 100%;
+    background-color: #00A000;
+}

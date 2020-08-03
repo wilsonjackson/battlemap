@@ -1,8 +1,9 @@
 import React, {useContext, useEffect} from "react";
 import BattleContext from "../contexts/BattleContext";
-import Token from "./Token";
 import {useDrop} from "react-dnd";
 import {GridLines} from "./GridLines";
+import GridToken from "./GridToken";
+import './Grid.css';
 
 export default function Grid({grid}) {
   const battle = useContext(BattleContext);
@@ -11,15 +12,21 @@ export default function Grid({grid}) {
   const cellToCoords = ({x, y}) => ({x: x * grid.tileSize, y: y * grid.tileSize});
 
   const [, drop] = useDrop({
-    accept: 'token',
+    accept: ['token', 'protoToken'],
     drop: (item, monitor) => {
       const {x, y} = coordsToCell(normalizeCoords(monitor.getClientOffset()));
       const {x: left, y: top} = cellToCoords({x, y});
       const token = {...item, width: grid.tileSize, height: grid.tileSize, x, y, left, top};
-      if (item.id)
-        battle.updateToken(token);
-      else
-        battle.addToken(token);
+      switch (item.type) {
+        case 'protoToken':
+          battle.addToken(token);
+          break;
+        case 'token':
+          battle.updateToken(token);
+          break;
+        default:
+          console.log(`Unexpected drop item type: ${item.type}`);
+      }
     }
   });
 
@@ -38,10 +45,11 @@ export default function Grid({grid}) {
         <GridLines key="x" grid={grid} orientation="X"/>,
         <GridLines key="y" grid={grid} orientation="Y"/>
       ]}
-      <div ref={drop} className="grid" style={{left: grid.offsetX, top: grid.offsetY, width: grid.bounds.width, height: grid.bounds.height}}>
-      {battle.tokensOnGrid.map((token, i) => (
-        <Token key={i} {...token}/>
-      ))}
+      <div ref={drop} className="grid"
+           style={{left: grid.offsetX, top: grid.offsetY, width: grid.bounds.width, height: grid.bounds.height}}>
+        {battle.tokensOnGrid.map(token => (
+          <GridToken key={token.id} {...token}/>
+        ))}
       </div>
     </div>
   );

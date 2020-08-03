@@ -1,0 +1,13 @@
+.grid-token {
+    position: absolute;
+    transform: translate(0, 0);
+}
+.grid-token > .token {
+    width: 100%;
+    height: 100%;
+    font-size: inherit;
+}
+.grid-token > .token > .name,
+.grid-token > .token > .number {
+    width: 40%;
+}

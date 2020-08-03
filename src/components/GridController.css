@@ -1,0 +1,12 @@
+.grid-controller {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #fff2;
+    font-size: 16px;
+    text-align: left;
+}
+.grid-controller > label > input[type="number"],
+.grid-controller > label > span {
+    width: 50px;
+}

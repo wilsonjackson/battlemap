@@ -2,6 +2,19 @@
   box-sizing: border-box;
 }
 
+:focus {
+  outline: none;
+}
+
+body {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .battlemap {
   background-color: #282c34;
   height: 100vh;
@@ -11,11 +24,7 @@
   justify-content: center;
   text-align: center;
   color: white;
-}
-
-img {
-  max-width: 100%;
-  max-height: 100%;
+  font-family: cursive;
 }
 
 .form > label {
@@ -33,92 +42,4 @@ img {
 }
 .form > label > span {
   text-align: center;
-}
-
-.token {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #b34e4e;
-  box-shadow: 0 0 2px #fff;
-  font-family: cursive;
-  font-size: 30px;
-  transform: translate(0, 0);
-}
-.token > .name,
-.token > .number {
-  text-align: center;
-  text-shadow: 1px 1px 2px #0009;
-}
-.token > .health {
-  position: absolute;
-  bottom: -5%;
-  width: 100%;
-  height: 10%;
-  background-color: #A00000;
-  box-shadow: 0 0 2px #fff;
-}
-.token > .health > .current {
-  height: 100%;
-  background-color: #00A000;
-}
-
-.token-palette {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 200px;
-  height: 80%;
-  background-color: #ffffff1a;
-}
-
-.token-palette > .new-token {
-  position: absolute;
-  left: 220px;
-  top: 0;
-  width: 300px;
-  height: 200px;
-  background-color: #fff3;
-}
-
-.grid-controller {
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: #ffffff1a;
-  font-size: 16px;
-  text-align: left;
-}
-.grid-controller > label > input[type="number"],
-.grid-controller > label > span {
-  width: 50px;
-}
-
-.grid-container {
-  position: absolute;
-  overflow: hidden;
-}
-
-.grid-display {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-}
-
-.grid {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-}
-.grid > .token {
-  position: absolute;
-}
-.grid > .token > .name,
-.grid > .token > .number {
-  width: 40%;
 }

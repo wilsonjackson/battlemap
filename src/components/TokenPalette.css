@@ -1,0 +1,17 @@
+.token-palette {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    height: 80%;
+    background-color: #fff2;
+}
+
+.token-palette > .new-token {
+    position: absolute;
+    left: 220px;
+    top: 0;
+    width: 300px;
+    height: 200px;
+    background-color: #fff3;
+}

@@ -1,7 +1,8 @@
 import React, {useContext, useState} from "react";
-import Token from "./Token";
 import BattleContext from "../contexts/BattleContext";
 import {NewToken} from "./NewToken";
+import ProtoToken from "./ProtoToken";
+import './TokenPalette.css';
 
 export default function TokenPalette() {
   const battle = useContext(BattleContext);
@@ -19,7 +20,7 @@ export default function TokenPalette() {
       <button type={"button"} onClick={newToken}>Add token</button>
       <div className="token-list">
         {battle.protoTokens.map((token, i) => (
-          <Token key={i} {...token}/>
+          <ProtoToken key={i} {...token}/>
         ))}
       </div>
       {uiState.newToken && <NewToken addToken={addToken}/>}

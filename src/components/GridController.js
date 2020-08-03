@@ -1,4 +1,5 @@
 import React from "react";
+import './GridController.css';
 
 export default function GridController({grid, update}) {
   return (
