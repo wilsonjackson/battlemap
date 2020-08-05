@@ -5,4 +5,36 @@
     height: 50%;
     width: 200px;
     background-color: #fff2;
+    padding: 0 5px;
+}
+
+.stat {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-bottom: 1vh;
+}
+.stat > .name {
+    width: 60%;
+    text-align: left;
+}
+.stat > .value {
+    width: 40%;
+    text-align: right;
+}
+
+.hp-mod {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #999;
+    border-radius: 2px;
+}
+.hp-mod input {
+    width: 50px;
+    text-align: right;
 }
