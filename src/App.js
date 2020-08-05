@@ -15,7 +15,7 @@ import TokenInfo from './components/TokenInfo';
 
 export default function App() {
   const grid = useGrid();
-  const battle = useBattle(grid);
+  const battle = useBattle();
   const [token, setToken] = useState(null);
 
   return (

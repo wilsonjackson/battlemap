@@ -14,12 +14,12 @@ export const NewToken = ({addToken}) => {
       <label>
         Hit points
         <input type="number" value={tokenInfo.maxHp}
-               onChange={e => update({maxHp: e.target.value})}/>
+               onChange={e => update({maxHp: parseInt(e.target.value || 0, 10)})}/>
       </label>
       <label>
         Speed (ft)
         <input type="number" value={tokenInfo.speed}
-               onChange={e => update({speed: e.target.value})}/>
+               onChange={e => update({speed: parseInt(e.target.value || 0, 10)})}/>
       </label>
       <button type="button" onClick={() => addToken(tokenInfo)}>Add</button>
     </div>

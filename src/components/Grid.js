@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect} from 'react';
 import BattleContext from "../contexts/BattleContext";
 import TokenContext from "../contexts/TokenContext";
 import {useDrop} from "react-dnd";
@@ -18,7 +18,7 @@ export default function Grid({grid}) {
     drop: (item, monitor) => {
       const {x, y} = coordsToCell(normalizeCoords(monitor.getClientOffset()));
       const {x: left, y: top} = cellToCoords({x, y});
-      const token = {...item, width: grid.tileSize, height: grid.tileSize, x, y, left, top};
+      const token = {...item, width: grid.tileSize, height: grid.tileSize, x, y, left, top, zIndex: Math.abs(grid.height - y) + x};
       switch (item.type) {
         case 'protoToken':
           battle.addToken(token);

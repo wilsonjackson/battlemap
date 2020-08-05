@@ -9,7 +9,7 @@ export const initialState = {
   tokensOnGrid: []
 };
 
-export default function useBattle(grid) {
+export default function useBattle() {
   const [battle, updateBattle] = useState(initialState);
 
   useStorage('battle_state', [battle],
@@ -36,8 +36,7 @@ export default function useBattle(grid) {
           ...token,
           hp: token.maxHp,
           id: battle.nextTokenId,
-          number: tokenNumbers[token.name],
-          zIndex: Math.abs(grid.height - token.y) + token.x
+          number: tokenNumbers[token.name]
         }])
       }));
     },

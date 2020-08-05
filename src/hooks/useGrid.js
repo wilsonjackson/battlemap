@@ -28,19 +28,19 @@ export default function useGrid() {
       offsetY: grid.offsetY
     }),
     state => {
-      if (state) updateGrid(Object.assign({}, grid, state));
-      else updateGrid(Object.assign({}, initialState));
+      if (state) updateGrid({...grid, ...state});
+      else updateGrid({...initialState});
     });
 
   const gridController = {
     update(overrides) {
-      updateGrid(Object.assign({}, grid, overrides));
+      updateGrid({...grid, ...overrides});
     },
     get tileSize() {
       return grid.bounds.width / grid.width;
     },
     get height() {
-      return Math.round(grid.bounds.height / grid.tileSize);
+      return Math.round(grid.bounds.height / gridController.tileSize);
     }
   };
 
