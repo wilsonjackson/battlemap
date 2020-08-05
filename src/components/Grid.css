@@ -15,3 +15,9 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.speed-radius {
+    position: absolute;
+    background-color: #0903;
+    border-radius: 50%;
+}
