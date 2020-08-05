@@ -1,8 +1,8 @@
-import React, {useContext, useEffect, useRef} from "react";
-import Token from "./Token";
-import {useDrag} from "react-dnd";
-import composeRefs from "@seznam/compose-react-refs/composeRefs";
-import useKeys from "../hooks/useKeys";
+import React, {useContext, useEffect, useRef} from 'react';
+import Token from './Token';
+import {useDrag} from 'react-dnd';
+import composeRefs from '@seznam/compose-react-refs/composeRefs';
+import useKeys from '../hooks/useKeys';
 import './GridToken.css';
 import TokenContext, {pub} from '../contexts/TokenContext';
 
@@ -26,15 +26,19 @@ export default function GridToken(props) {
   // noinspection JSUnusedGlobalSymbols
   const handlers = {
     onMouseDown: () => {
-      if (!tokenContext.token || tokenContext.token.id !== id)
-        tokenContext.setToken(props);
+      setTimeout(() => {
+        if (!tokenContext.token || tokenContext.token.id !== id)
+          tokenContext.setToken(props);
+      });
     },
     onClick: e => e.stopPropagation()
   };
 
   useEffect(() => {
+    /** @var {HTMLElement} */
+    const el = self.current;
     if (tokenContext.token && tokenContext.token.id === id)
-      self.current.focus();
+      el.focus();
   });
 
   const style = {
