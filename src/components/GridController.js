@@ -8,6 +8,10 @@ export default function GridController({grid, update}) {
         <input type="number" value={grid.width}
                onChange={e => update({width: parseInt(e.target.value, 10)})}/>
       </label>
+      <label>Feet per Tile
+        <input type="number" value={grid.ftPerTile}
+               onChange={e => update({ftPerTile: parseFloat(e.target.value)})}/>
+      </label>
       <label>Grid X-Offset
         <input type="number" name="grid-offset-x" value={grid.offsetX}
                onChange={e => update({offsetX: parseInt(e.target.value, 10)})}/>

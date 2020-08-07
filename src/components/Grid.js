@@ -55,10 +55,10 @@ export default function Grid({grid}) {
         <GridLines key="y" grid={grid} orientation="Y"/>
       ]}
       {speedToken && <div className="speed-radius" style={{
-        width: grid.tileSize + grid.tileSize * (speedToken.speed / 2.5) * 2,
-        height: grid.tileSize + grid.tileSize * (speedToken.speed / 2.5) * 2,
-        left: speedToken.left - (grid.tileSize * (speedToken.speed / 2.5)),
-        top: speedToken.top - (grid.tileSize * (speedToken.speed / 2.5))
+        width: grid.tileSize + grid.tileSize * (speedToken.speed / grid.ftPerTile) * 2,
+        height: grid.tileSize + grid.tileSize * (speedToken.speed / grid.ftPerTile) * 2,
+        left: speedToken.left - (grid.tileSize * (speedToken.speed / grid.ftPerTile)),
+        top: speedToken.top - (grid.tileSize * (speedToken.speed / grid.ftPerTile))
       }}/>}
       <div ref={drop} className="grid" onClick={() => setToken(null)}
            style={{left: grid.offsetX, top: grid.offsetY, width: grid.bounds.width, height: grid.bounds.height}}>

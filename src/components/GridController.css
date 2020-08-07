@@ -6,7 +6,7 @@
     font-size: 16px;
     text-align: left;
 }
-.grid-controller > label > input[type="number"],
+.grid-controller > label > input,
 .grid-controller > label > span {
     width: 50px;
 }

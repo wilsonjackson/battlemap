@@ -7,6 +7,7 @@ const initialState = {
   width: 32,
   height: 0,
   tileSize: 0,
+  ftPerTile: 5,
   offsetX: 1,
   offsetY: 1,
   bounds: {
@@ -24,6 +25,7 @@ export default function useGrid() {
     () => ({
       show: grid.show,
       width: grid.width,
+      ftPerTile: grid.ftPerTile,
       offsetX: grid.offsetX,
       offsetY: grid.offsetY
     }),
