@@ -16,7 +16,7 @@ export default function Grid({grid}) {
 
   const [, drop] = useDrop({
     accept: ['token', 'protoToken'],
-    hover: (item) => {
+    hover: (item, monitor) => {
       if (item.type === 'token' && (!speedToken || item.id !== speedToken.id)) {
         setSpeedToken(item);
       }
@@ -35,7 +35,6 @@ export default function Grid({grid}) {
         default:
           console.log(`Unexpected drop item type: ${item.type}`);
       }
-      setSpeedToken(null);
     }
   });
 
@@ -63,7 +62,7 @@ export default function Grid({grid}) {
       <div ref={drop} className="grid" onClick={() => setToken(null)}
            style={{left: grid.offsetX, top: grid.offsetY, width: grid.bounds.width, height: grid.bounds.height}}>
         {battle.tokensOnGrid.map(token => (
-          <GridToken key={token.id} {...token}/>
+          <GridToken key={token.id} endDrag={() => setSpeedToken(null)} {...token}/>
         ))}
       </div>
     </div>

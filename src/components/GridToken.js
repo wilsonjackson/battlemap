@@ -7,7 +7,7 @@ import './GridToken.css';
 import TokenContext, {pub} from '../contexts/TokenContext';
 
 export default function GridToken(props) {
-  const {id, zIndex, width, height, left, top} = props;
+  const {id, zIndex, width, height, left, top, endDrag} = props;
   const self = useRef();
   const tokenContext = useContext(TokenContext);
   const keys = useKeys({
@@ -20,7 +20,8 @@ export default function GridToken(props) {
     }),
     collect: monitor => ({
       isDragging: monitor.isDragging()
-    })
+    }),
+    end: endDrag
   });
 
   // noinspection JSUnusedGlobalSymbols
