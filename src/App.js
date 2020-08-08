@@ -12,6 +12,8 @@ import TokenPalette from './components/TokenPalette';
 import useBattle from './hooks/useBattle';
 import useGrid from './hooks/useGrid';
 import TokenInfo from './components/TokenInfo';
+import BackgroundLayers from './components/BackgroundLayers';
+import TokenGraveyard from './components/TokenGraveyard';
 
 export default function App() {
   const grid = useGrid();
@@ -28,9 +30,11 @@ export default function App() {
             <div className="left-panel">
               <GridController grid={grid} update={grid.update}/>
               <TokenPalette/>
+              <BackgroundLayers/>
             </div>
             <div className="right-panel">
               <TokenInfo/>
+              <TokenGraveyard/>
             </div>
           </DndProvider>
         </TokenContext.Provider>

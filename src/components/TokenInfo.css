@@ -1,6 +1,5 @@
 .token-info {
-    flex-grow: 0;
-    margin-bottom: 10px;
+    flex: 0;
     background-color: #fff2;
     padding: 0 5px;
 }

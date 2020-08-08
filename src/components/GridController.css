@@ -1,6 +1,5 @@
 .grid-controller {
-    flex-grow: 0;
-    margin-bottom: 10px;
+    flex: 0;
     background-color: #fff2;
     font-size: 16px;
     text-align: left;

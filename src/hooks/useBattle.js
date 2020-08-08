@@ -1,12 +1,13 @@
-import {useState} from "react";
-import useStorage from "./useStorage";
+import {useState} from 'react';
+import useStorage from './useStorage';
 
 export const initialState = {
   map: null,
   nextTokenId: 1,
   tokenNumbers: {},
   protoTokens: [],
-  tokensOnGrid: []
+  tokensOnGrid: [],
+  tokensInGraveyard: []
 };
 
 export default function useBattle() {
@@ -49,6 +50,15 @@ export default function useBattle() {
           return t.id === token.id ? {...token} : t;
         })
       }));
+    },
+    moveTokenToGraveyard(token) {
+      updateBattle({
+        ...battle,
+        ...{
+          tokensOnGrid: battle.tokensOnGrid.filter(t => t.id !== token.id),
+          tokensInGraveyard: [].concat(battle.tokensInGraveyard, [{...token, type: 'deadToken'}])
+        }
+      });
     }
   }
 

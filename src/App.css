@@ -48,7 +48,12 @@ img {
 
 .left-panel > *,
 .right-panel > * {
-  flex-grow: 1;
+  flex: 1;
+}
+
+.right-panel > * + *,
+.left-panel > * + * {
+  margin-top: 10px;
 }
 
 .form > label {
@@ -66,4 +71,11 @@ img {
 }
 .form > label > span {
   text-align: center;
+}
+
+.token-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 5px 0;
 }
