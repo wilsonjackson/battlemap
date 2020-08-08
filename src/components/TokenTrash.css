@@ -1,0 +1,8 @@
+.token-trash {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #fff3;
+}

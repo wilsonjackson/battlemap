@@ -2,6 +2,16 @@
     background-color: #fff2;
 }
 
+.token-palette > .token-controls {
+    position: relative;
+}
+
+.token-palette > .token-controls > .token-trash {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
 .token-palette > .new-token {
     position: absolute;
     left: 220px;

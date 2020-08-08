@@ -23,7 +23,10 @@ export default function useBattle() {
     addProtoToken(token) {
       updateBattle(Object.assign({}, battle, {
         protoTokens: [].concat(battle.protoTokens, [token])
-      }))
+      }));
+    },
+    deleteProtoToken(token) {
+      updateBattle({...battle, ...{protoTokens: battle.protoTokens.filter(t => t.name !== token.name)}});
     },
     addToken(token) {
       const tokenNumbers = Object.assign({}, battle.tokenNumbers, {

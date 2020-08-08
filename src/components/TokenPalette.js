@@ -3,6 +3,7 @@ import BattleContext from "../contexts/BattleContext";
 import {NewToken} from "./NewToken";
 import ProtoToken from "./ProtoToken";
 import './TokenPalette.css';
+import TokenTrash from './TokenTrash';
 
 export default function TokenPalette() {
   const battle = useContext(BattleContext);
@@ -15,9 +16,16 @@ export default function TokenPalette() {
     updateUi(Object.assign({}, uiState, {newToken: false}));
   };
 
+  const deleteToken = tokenInfo => {
+    battle.deleteProtoToken(tokenInfo);
+  };
+
   return (
     <div className="token-palette">
-      <button type={"button"} onClick={newToken}>Add token</button>
+      <div className="token-controls">
+        <button type={"button"} onClick={newToken}>Add token</button>
+        <TokenTrash onDrop={deleteToken}/>
+      </div>
       <div className="token-list">
         {battle.protoTokens.map((token, i) => (
           <ProtoToken key={i} {...token}/>
