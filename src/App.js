@@ -23,11 +23,17 @@ export default function App() {
       <BattleContext.Provider value={battle}>
         <TokenContext.Provider value={{token, setToken}}>
           <DndProvider backend={HTML5Backend}>
-            <Grid grid={grid}/>
-            <Map update={grid.update} onSelect={load}/>
-            <GridController grid={grid} update={grid.update}/>
-            <TokenPalette/>
-            <TokenInfo/>
+            <div className="left-panel">
+              <GridController grid={grid} update={grid.update}/>
+              <TokenPalette/>
+            </div>
+            {/*<div className="center-panel">*/}
+              <Grid grid={grid}/>
+              <Map update={grid.update} onSelect={load}/>
+            {/*</div>*/}
+            <div className="right-panel">
+              <TokenInfo/>
+            </div>
           </DndProvider>
         </TokenContext.Provider>
       </BattleContext.Provider>

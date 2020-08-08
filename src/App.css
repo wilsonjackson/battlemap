@@ -27,6 +27,30 @@ img {
   font-family: cursive;
 }
 
+.left-panel,
+.right-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.left-panel {
+  left: 0;
+}
+
+.right-panel {
+  right: 0;
+}
+
+.left-panel > *,
+.right-panel > * {
+  flex-grow: 1;
+}
+
 .form > label {
   width: 100%;
   display: flex;
